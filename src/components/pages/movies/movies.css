@@ -1,0 +1,41 @@
+.movies h2 {
+  margin: 1rem;
+}
+
+.movie__lists {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  padding-inline-start: 0;
+}
+
+.list:hover {
+  transform: scale(1.08);
+  opacity: 1;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+
+.list {
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie {
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.movie__lists::-webkit-scrollbar {
+  display: none;
+}
+
+.movies img {
+  max-width: 20rem;
+}

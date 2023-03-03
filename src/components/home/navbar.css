@@ -1,0 +1,48 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  width: 100%;
+  height: 30px;
+  z-index: 52;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+.nav__contents {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav__links {
+  margin-left: 1rem;
+}
+
+.nav__links a {
+  padding: 0 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+.nav__black {
+  background-color: #111;
+}
+.nav__logo {
+  position: fixed;
+  /* top: 10px; */
+  left: 0;
+  width: 80px;
+  object-fit: contain;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.nav__avatar {
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  width: 30px;
+}

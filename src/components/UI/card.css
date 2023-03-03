@@ -1,0 +1,7 @@
+.card {
+  /* min-height: 15rem; */
+  padding: 0.5rem;
+  text-align: left;
+  /* overflow: hidden; */
+  list-style: none;
+}

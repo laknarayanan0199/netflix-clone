@@ -1,0 +1,78 @@
+.banner {
+  margin: 0rem 0.5rem;
+}
+.banner__buttons {
+  display: flex;
+}
+
+.banner__button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  background-color: rgba(51, 51, 51, 0.5);
+}
+.banner__button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  transition: all 250ms;
+}
+
+.banner_lists {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow-x: scroll;
+  position: relative;
+}
+
+.banner_lists::-webkit-scrollbar {
+  display: none;
+}
+
+.banner_lists img {
+  z-index: 10;
+  max-width: 150vh;
+  border-radius: 0.5rem;
+}
+
+.banner__contents {
+  z-index: 15;
+  position: absolute;
+  bottom: 150px;
+  padding-left: 1rem;
+}
+
+.banner__title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+}
+.banner__description {
+  width: 45rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  max-width: 360px;
+  height: 80px;
+}
+
+.banner--fadeBottom {
+  position: absolute;
+  bottom: 0;
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}
