@@ -8,11 +8,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Banner />
-      <Series
-        title="Netflix Originals"
-        fetchUrl={requests.fetchNetflixOriginals}
-      />
+      <Banner fetchUrl={requests.fetchNetflixOriginals} />
+      <Series title="Netflix Originals" fetchUrl={requests.fetchTrending} />
+      <Series title="Drama" fetchUrl={requests.fetchDrama} />
       <Movies title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Movies title="Action Movies" fetchUrl={requests.fetchActionMovies} />
       <Movies title="Romantic Movies" fetchUrl={requests.fetchRomanceMovies} />

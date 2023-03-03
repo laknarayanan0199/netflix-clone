@@ -1,23 +1,23 @@
 import { Add } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import requests from "../../Requests";
+// import requests from "../../Requests";
 import { listActions } from "../../store/listSlice";
 import "./banner.css";
 
-const Contents = () => {
+const Contents = ({fetchUrl}) => {
   const [movies, setMovies] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(requests.fetchNetflixOriginals)
+    fetch(fetchUrl)
       .then((res) => res.json())
 
       .then((response) => {
         setMovies(response.results);
       });
-  }, []);
+  }, [fetchUrl]);
 
   const addToList = (series) => {
     dispatch(listActions.addToMyList(series));
