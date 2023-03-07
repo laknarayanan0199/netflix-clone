@@ -25,12 +25,8 @@ const Signup = (props) => {
     if (password.length > 7) {
       setPasswordIsValid(true);
       navigate("/home");
-      dispatch(
-        userActions.addUser({
-          email: email,
-          password: password,
-        })
-      );
+      dispatch(userActions.addUser({ email, password }));
+      prompt(`New User Account Created`);
     } else
       setPasswordIsValid(
         <span>Password should be more than 7 characters</span>

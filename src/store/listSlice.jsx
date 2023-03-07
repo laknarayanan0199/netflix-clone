@@ -8,7 +8,7 @@ const listSlice = createSlice({
       const newList = action.payload;
       const existing = state.list.find((list) => list.id === newList.id);
       if (!existing) {
-      state.list.push(action.payload);
+        state.list.push(action.payload);
       } else state.list = state.list.filter((list) => list.id !== newList.id);
     },
     removeFromList(state, action) {

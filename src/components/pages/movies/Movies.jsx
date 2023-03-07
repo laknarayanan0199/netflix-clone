@@ -1,13 +1,17 @@
 import { Add } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { listActions } from "../../../store/listSlice";
+import { movieActions } from "../../../store/movieSlice";
 import Card from "../../UI/Card";
 import "./movies.css";
 
 const Movies = ({ title, fetchUrl }) => {
   const [movies, setMovies] = useState([]);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const imgBaseURL = "https://image.tmdb.org/t/p/original/";
 
@@ -17,11 +21,17 @@ const Movies = ({ title, fetchUrl }) => {
 
       .then((mov) => {
         setMovies(mov.results);
+        dispatch(movieActions.addMovies(mov.results));
       });
-  }, [fetchUrl]);
+  }, []);
 
   const addToList = (movie) => {
     dispatch(listActions.addToMyList(movie));
+  };
+
+  const navi = (id) => {
+    navigate(`/movies/${id}`);
+    console.log(id);
   };
 
   return (
@@ -31,7 +41,13 @@ const Movies = ({ title, fetchUrl }) => {
         {movies.map((movie) => (
           <Card>
             <li key={movie.id} className="list">
-              <div className="movie">
+              <div
+                className="movie"
+                onClick={() => {
+                  navi(movie.id);
+                  console.log(movie.id);
+                }}
+              >
                 <img
                   src={`${imgBaseURL}${movie.backdrop_path}`}
                   alt={movie.original_title}

@@ -46,7 +46,7 @@ const Register = () => {
             <div className="input">
               <input
                 type="email"
-                placeholder="email address"
+                placeholder="Email address"
                 onChange={emailHandler}
               />
               <button className="registerButton" onClick={registerHandler}>

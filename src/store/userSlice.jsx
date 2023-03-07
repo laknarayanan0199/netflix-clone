@@ -2,20 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { user: [] },
+  initialState: { user: { email: "test@test.com", password: "test123" } },
   reducers: {
     addUser(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
       const newUser = action.payload;
-
-      state.user.push(newUser);
+      console.log(newUser);
+      state.user.push(...newUser);
     },
-    // checkUser(state, action) {
-    //   const checkExistingUser = action.payload;
-    //   if (state.user === checkExistingUser) {
-    //     return true;
-    //   }
-    // },
   },
 });
 

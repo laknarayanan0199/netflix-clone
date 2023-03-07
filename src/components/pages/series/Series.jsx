@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { listActions } from "../../../store/listSlice";
+import { movieActions } from "../../../store/movieSlice";
 import Card from "../../UI/Card";
 import "./series.css";
 
@@ -24,31 +25,32 @@ const Series = ({ title, fetchUrl }) => {
       })
       .then((series) => {
         setSeries(series.results);
+        dispatch(movieActions.addSeries(series.results));
       });
-  }, [fetchUrl]);
+  }, []);
 
   const addToList = (ser) => {
     dispatch(listActions.addToMyList(ser));
-    console.log(ser);
+    // console.log(ser);
   };
 
   const navi = (id) => {
     navigate(`/series/${id}`);
-    console.log(id);
+    // console.log(id);
   };
 
   return (
     <div className="series">
       <h2> {title}</h2>
-      <ul className="series__lists">
+      <div className="series__lists">
         {series.map((ser) => (
           <Card>
-            <li
+            <div
               key={ser.id}
               className="list"
               onClick={() => {
                 navi(ser.id);
-                console.log(ser.id);
+                // console.log(ser.id);
               }}
             >
               <div className="series__list">
@@ -64,16 +66,12 @@ const Series = ({ title, fetchUrl }) => {
                   <Add /> My List
                 </button>
               </div>
-            </li>
+            </div>
           </Card>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
 export default Series;
-
-// id: series.id,
-// title: series.original_title,
-// description: series.overview,

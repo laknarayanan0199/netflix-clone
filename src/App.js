@@ -4,7 +4,7 @@ import Home from "./components/home/Home";
 import Register from "./components/pages/register/Register";
 import Movies from "./components/pages/movies/Movies";
 import Series from "./components/pages/series/Series";
-import SignIn from "./components/pages/signIn/SignIn";
+import SignIn from "./components/pages/logIn/SignIn";
 import MyList from "./components/pages/my-list/MyList";
 import requests from "./Requests";
 import Navbar from "./components/home/Navbar";
@@ -17,7 +17,7 @@ function App() {
       <Route path="/login" element={<SignIn />} />
       <Route>
         <Route path="/home" element={<Home />} />
-        <Route
+        {/* <Route
           path="/movies"
           element={
             <>
@@ -38,13 +38,13 @@ function App() {
                 title="Netflix Originals"
                 fetchUrl={requests.fetchNetflixOriginals}
               />
-              {/* <Series title="This Year Release" fetchUrl={requests.thisYear} /> */}
+              {/* <Series title="This Year Release" fetchUrl={requests.thisYear} /> 
               <Series title="Drama" fetchUrl={requests.fetchDrama} />
             </>
           }
         />
         <Route path="/series/:id" element={<Series />} />
-        <Route path="/my-list" element={<MyList />} />
+        <Route path="/my-list" element={<MyList />} /> */}
       </Route>
     </Routes>
   );
