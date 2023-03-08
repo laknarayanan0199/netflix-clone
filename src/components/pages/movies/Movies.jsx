@@ -31,28 +31,26 @@ const Movies = ({ title, fetchUrl }) => {
 
   const navi = (id) => {
     navigate(`/movies/${id}`);
-    console.log(id);
   };
 
   return (
     <div className="movies">
       <h2> {title}</h2>
-      <ul className="movie__lists">
+      <div className="movie__lists">
         {movies.map((movie) => (
           <Card>
-            <li key={movie.id} className="list">
+            <div key={movie.id} className="list">
               <div
                 className="movie"
                 onClick={() => {
                   navi(movie.id);
-                  console.log(movie.id);
                 }}
               >
                 <img
-                  src={`${imgBaseURL}${movie.backdrop_path}`}
-                  alt={movie.original_title}
+                  src={`${imgBaseURL}${movie?.backdrop_path}`}
+                  alt={movie?.original_title || movie?.title}
                 />
-                <h4>{movie.original_title}</h4>
+                <h4>{movie?.name || movie?.title || movie?.original_name}</h4>
               </div>
               <div className="action-btns">
                 <button className="action-btn">Play</button>
@@ -60,16 +58,15 @@ const Movies = ({ title, fetchUrl }) => {
                   className="action-btn"
                   onClick={() => {
                     addToList(movie);
-                    console.log(movie);
                   }}
                 >
                   <Add /> My List
                 </button>
               </div>
-            </li>
+            </div>
           </Card>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ const API_KEY = "addd930c4372e94ea28bccfa8a21828d";
 
 const requests = {
   fetchTrending: `${baseURL}/discover/tv?api_key=${API_KEY}&language=en-US&region=UK&primary_release_year=2023`,
-  fetchthisYear: `{${baseURL}/discover/tv?api_key=${API_KEY}&language=en-US&region=IN&include_adult=false&page=12&primary_release_year=2023`,
+  fetchthisYear: `{${baseURL}/discover/tv?api_key=${API_KEY}&page=21`,
   fetchNetflixOriginals: `${baseURL}/discover/tv?api_key=${API_KEY}&with_networks=213`,
   fetchTopRated: `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=en-us`,
   fetchActionMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&with_genres=28`,
@@ -15,8 +15,6 @@ const requests = {
 };
 
 export default requests;
-
-
 
 // &with_genres=18&primary_release_year=2023
 

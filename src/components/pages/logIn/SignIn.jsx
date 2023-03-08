@@ -3,30 +3,27 @@ import netflix from "../../../assests/netflix.png";
 import "./signIn.css";
 import "../register/navbar.css";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [alert, setAlert] = useState();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.user);
 
-  console.log(user.email);
-
-  const register = () => {
-    navigate("/");
-  };
+  const navigate = useNavigate();
 
   const signIn = (e) => {
     e.preventDefault();
     if (email === user.email && password === user.password) {
+      localStorage.setItem(email, `${password}`);
+      props.loginHandler(email, password);
       setAlert(false);
       navigate("/home");
-    } else setAlert(true);
+    }
+    return setAlert(true);
   };
 
   return (
@@ -61,7 +58,7 @@ const SignIn = () => {
           </p>
           <h5>
             <span className="signInScreen__gray">New to Netflix? </span>
-            <span onClick={register} className="signInScreen__link">
+            <span onClick={() => navigate("/")} className="signInScreen__link">
               Sign up now
             </span>
           </h5>

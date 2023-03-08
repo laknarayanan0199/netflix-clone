@@ -8,6 +8,8 @@ import "./signup.css";
 import "./navbar.css";
 
 const Signup = (props) => {
+  const { email } = props;
+
   const [password, setPassword] = useState("");
 
   const [passwordIsValid, setPasswordIsValid] = useState();
@@ -33,17 +35,17 @@ const Signup = (props) => {
       );
   };
 
-  const { email } = props;
   return (
     <>
       <div className="navbar border">
-        <img className="logo" src={netflix} alt="" />
-        <button className="SignupButton">Sign In</button>
+        <img className="logo" src={netflix} alt="logo" />
+        <button className="signInButton">Sign In</button>
       </div>
       <div className="signup">
         <form onSubmit={submitHandler}>
           <label>Email</label>
-          <p>{email}</p>
+          <input placeholder="Enter your email address"
+          value={email}></input>
           <input
             placeholder="Enter your Password"
             type="password"
@@ -51,12 +53,9 @@ const Signup = (props) => {
             onChange={passwordHandler}
           />
           {passwordIsValid}
-
-          <div>
-            <button type="submit" className="submit-btn">
-              Submit
-            </button>
-          </div>
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
         </form>
       </div>
     </>

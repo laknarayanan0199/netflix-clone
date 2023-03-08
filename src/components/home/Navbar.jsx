@@ -32,7 +32,7 @@ const Navbar = () => {
           }}
           className="nav__logo"
           src={netflix}
-          alt=""
+          alt="logo"
         />
         <div className="nav__links">
           <Link to={"/home"}>Home</Link>

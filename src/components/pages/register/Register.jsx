@@ -32,7 +32,7 @@ const Register = () => {
         <div className="register">
           <div className="navbar">
             <img className="logo" src={netflix} alt="logo" />
-            <button className="signupButton" onClick={signInHandler}>
+            <button className="signInButton" onClick={signInHandler}>
               Sign In
             </button>
           </div>

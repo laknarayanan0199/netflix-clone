@@ -47,13 +47,15 @@ p {
 }
 
 input {
-  height: 1rem;
+  height: 3rem;
+  width: 100%;
   border: none;
   padding: 0 10px;
 }
 
 .registerButton {
   height: 100%;
+  width: 50%;
   background-color: red;
   border: none;
   color: white;

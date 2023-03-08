@@ -7,7 +7,7 @@ const userSlice = createSlice({
     addUser(state, action) {
       // console.log(action.payload);
       const newUser = action.payload;
-      console.log(newUser);
+      // console.log(newUser);
       state.user.push(...newUser);
     },
   },

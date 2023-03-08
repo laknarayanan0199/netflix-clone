@@ -14,6 +14,7 @@ const Home = () => {
       <Movies title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Movies title="Action Movies" fetchUrl={requests.fetchActionMovies} />
       <Movies title="Romantic Movies" fetchUrl={requests.fetchRomanceMovies} />
+      <Series title="This Year Release" fetchUrl={requests.fetchthisYear} />
     </>
   );
 };

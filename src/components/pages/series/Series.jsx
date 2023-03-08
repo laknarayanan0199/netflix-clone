@@ -31,12 +31,10 @@ const Series = ({ title, fetchUrl }) => {
 
   const addToList = (ser) => {
     dispatch(listActions.addToMyList(ser));
-    // console.log(ser);
   };
 
   const navi = (id) => {
     navigate(`/series/${id}`);
-    // console.log(id);
   };
 
   return (
@@ -45,15 +43,13 @@ const Series = ({ title, fetchUrl }) => {
       <div className="series__lists">
         {series.map((ser) => (
           <Card>
-            <div
-              key={ser.id}
-              className="list"
-              onClick={() => {
-                navi(ser.id);
-                // console.log(ser.id);
-              }}
-            >
-              <div className="series__list">
+            <div key={ser.id} className="list">
+              <div
+                className="series__list"
+                onClick={() => {
+                  navi(ser.id);
+                }}
+              >
                 <img
                   src={`${imgBaseURL}${ser.backdrop_path}`}
                   alt={series.original_title}
