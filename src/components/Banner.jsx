@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 // import requests from "../../Requests";
-import { listActions } from "../../store/listSlice";
+import { listActions } from "../store/listSlice";
 import "./banner.css";
 
 const Contents = ({ fetchUrl }) => {
@@ -15,10 +15,8 @@ const Contents = ({ fetchUrl }) => {
   const navigate = useNavigate();
 
   const moviesfromSlice = useSelector((state) => state.movies.movies);
-  console.log("movies ",moviesfromSlice );
 
   const seriesfromSlice = useSelector((state) => state.movies.series);
-  console.log("series",seriesfromSlice);
 
   useEffect(() => {
     fetch(fetchUrl)
@@ -40,9 +38,6 @@ const Contents = ({ fetchUrl }) => {
     const seriesPage = seriesfromSlice.filter(
       (series) => series.id === Number(id)
     )[0];
-
-    console.log(moviesPage, "movies page found");
-    console.log(seriesPage, "series page found");
 
     if (moviesPage) {
       navigate(`/movies/${id}`);

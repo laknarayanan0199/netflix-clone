@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import netflix from "../../assests/netflix.png";
+import netflix from "../assests/netflix.png";
+import { authActions } from "../store/authSlice";
 import "./navbar.css";
 
 const Navbar = () => {
   const [show, handleShow] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const trasitionNavBar = () => {
     if (window.scrollY > 100) {
@@ -22,6 +25,12 @@ const Navbar = () => {
       window.removeEventListener("scroll", trasitionNavBar);
     };
   }, []);
+
+  const profileHandler = () => {
+    localStorage.removeItem("isAuth");
+    navigate("/login");
+    dispatch(authActions.logOut());
+  };
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
@@ -46,6 +55,7 @@ const Navbar = () => {
         className="nav__avatar"
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
         alt=""
+        onClick={profileHandler}
       />
     </div>
   );

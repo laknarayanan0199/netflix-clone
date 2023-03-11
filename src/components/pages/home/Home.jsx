@@ -1,8 +1,8 @@
-import requests from "../../Requests";
-import Movies from "../pages/movies/Movies";
-import Series from "../pages/series/Series";
-import Banner from "./Banner";
-import Navbar from "./Navbar";
+import requests from "../../../Requests";
+import Movies from "../movies/Movies";
+import Series from "../series/Series";
+import Banner from "../../Banner";
+import Navbar from "../../Navbar";
 
 const Home = () => {
   return (

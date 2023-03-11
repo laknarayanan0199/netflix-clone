@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../home/Navbar";
+import Navbar from "../../Navbar";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { Add } from "@mui/icons-material";

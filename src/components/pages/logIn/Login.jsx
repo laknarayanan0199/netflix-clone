@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import netflix from "../../../assests/netflix.png";
-import "./signIn.css";
+import "./login.css";
 import "../register/navbar.css";
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../../store/authSlice";
 
-const SignIn = (props) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [alert, setAlert] = useState();
+  const [alert, setAlert] = useState(false);
 
-  const user = useSelector((state) => state.user.user);
+  const users = useSelector((state) => state.user.users);
+  console.log(users);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const signIn = (e) => {
     e.preventDefault();
-    if (email === user.email && password === user.password) {
-      localStorage.setItem(email, `${password}`);
-      props.loginHandler(email, password);
-      setAlert(false);
+    if (
+      users.some((user) => email === user.email && password === user.password)
+    ) {
+      localStorage.setItem("isAuth", true);
+      dispatch(authActions.loggedIn());
       navigate("/home");
     }
     return setAlert(true);
@@ -68,4 +73,4 @@ const SignIn = (props) => {
   );
 };
 
-export default SignIn;
+export default Login;

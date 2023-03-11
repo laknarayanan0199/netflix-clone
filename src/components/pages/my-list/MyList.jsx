@@ -7,7 +7,6 @@ import "../series/series.css";
 const MyList = () => {
   const list = useSelector((state) => state.myList.list);
   const dispatch = useDispatch();
-  console.log(list, "jjjej");
 
   const imgBaseURL = "https://image.tmdb.org/t/p/original/";
 
@@ -21,8 +20,8 @@ const MyList = () => {
       <ul className="series__lists">
         {list.length > 0 ? (
           list.map((list) => (
-            <Card>
-              <li key={list.id} className="list">
+            <Card key={list.id}>
+              <li className="list">
                 <div className="series__list">
                   <img
                     src={`${imgBaseURL}${list.backdrop_path}`}

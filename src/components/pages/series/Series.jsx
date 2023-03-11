@@ -42,8 +42,8 @@ const Series = ({ title, fetchUrl }) => {
       <h2> {title}</h2>
       <div className="series__lists">
         {series.map((ser) => (
-          <Card>
-            <div key={ser.id} className="list">
+          <Card key={ser.id}>
+            <div className="list">
               <div
                 className="series__list"
                 onClick={() => {

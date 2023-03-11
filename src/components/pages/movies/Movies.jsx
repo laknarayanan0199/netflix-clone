@@ -38,8 +38,8 @@ const Movies = ({ title, fetchUrl }) => {
       <h2> {title}</h2>
       <div className="movie__lists">
         {movies.map((movie) => (
-          <Card>
-            <div key={movie.id} className="list">
+          <Card key={movie.id}>
+            <div className="list">
               <div
                 className="movie"
                 onClick={() => {
