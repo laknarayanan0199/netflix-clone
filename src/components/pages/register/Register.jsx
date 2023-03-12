@@ -1,10 +1,7 @@
 import { useState } from "react";
 
 import Signup from "./Signup";
-import netflix from "../../../assests/netflix.png";
 import "./register.css";
-import "./navbar.css";
-import { useNavigate } from "react-router";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -22,20 +19,10 @@ const Register = () => {
     }
   };
 
-  const navigate = useNavigate();
-  const signInHandler = () => {
-    navigate("/login");
-  };
   return (
     <>
       {!emailIsValid ? (
         <div className="register">
-          <div className="navbar">
-            <img className="logo" src={netflix} alt="logo" />
-            <button className="signInButton" onClick={signInHandler}>
-              Sign In
-            </button>
-          </div>
           <div className="container">
             <h1>Unlimited movies, TV shows, and more.</h1>
             <h2>Watch anywhere. Cancel anytime.</h2>

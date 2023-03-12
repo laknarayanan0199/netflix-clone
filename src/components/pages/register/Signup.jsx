@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../../store/userSlice";
 import { useNavigate } from "react-router";
 
-import netflix from "../../../assests/netflix.png";
 import "./signup.css";
-import "./navbar.css";
-// import { authActions } from "../../../store/authSlice";
 
 const Signup = (props) => {
   const { email } = props;
@@ -30,8 +27,7 @@ const Signup = (props) => {
     event.preventDefault();
     if (password.length > 7) {
       setPasswordIsValid("");
-      navigate("/home");
-      // dispatch(authActions.loggedIn());
+      localStorage.setItem("isAuth", true);
       dispatch(
         userActions.addUser({
           id: Math.random(),
@@ -39,7 +35,8 @@ const Signup = (props) => {
           password: `${password}`,
         })
       );
-      // alert(`New User Account Created`);
+      navigate("/home");
+      alert(`New User Account Created`);
     } else
       setPasswordIsValid(
         <span>Password should be more than 7 characters</span>
@@ -48,10 +45,6 @@ const Signup = (props) => {
 
   return (
     <>
-      <div className="navbar border">
-        <img className="logo" src={netflix} alt="logo" />
-        <button className="signInButton">Sign In</button>
-      </div>
       <div className="signup">
         <form onSubmit={submitHandler}>
           <label>Email</label>

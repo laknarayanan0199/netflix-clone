@@ -1,17 +1,13 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const movieSlice = createSlice({
-  name: "movie",
-  initialState: { movies: [], series: [] },
+  name: "movie and series",
+  initialState: { data: [] },
   reducers: {
-    addMovies(state, action) {
-      if (state.movies.length < 80) {
-        state.movies.push(...action.payload);
-      }
-    },
-    addSeries(state, action) {
-      if (state.series.length < 80) {
-        state.series.push(...action.payload);
+    addData(state, action) {
+      if (state.data.length < 120) {
+        console.log(state.data.length);
+        state.data.push(...action.payload);
       }
     },
   },

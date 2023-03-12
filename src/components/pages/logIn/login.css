@@ -1,18 +1,23 @@
 .signin {
+  display: flex;
+  align-items: center;
   background: url(../../../assests/login-background.jpg);
   height: 100vh;
 }
 .signInScreen {
   max-width: 30%;
   height: 60%;
-  padding: 70px;
+  padding: 4rem;
   margin: 0 auto;
-  /* margin-left: auto;
-  margin-right: auto; */
   background: rgba(0, 0, 0, 0.85);
 }
+.signInScreen h1 {
+  font-size: 2rem;
+}
 .signInScreen > form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .signInScreen > form > input {
   outline-width: 0;
@@ -20,10 +25,11 @@
   margin-bottom: 1rem;
   border-radius: 5px;
   border: none;
-  padding: 5px 15px;
+  padding: 0.3rem 0.9rem;
 }
 .signInScreen > form > button {
-  padding: 1rem 1.2rem;
+  padding: 0.5rem;
+  width: 5rem;
   font-size: 1rem;
   color: #fff;
   background-color: #e50914;

@@ -47,12 +47,12 @@
 .banner__contents {
   z-index: 15;
   position: absolute;
-  bottom: 150px;
+  bottom: 100px;
   padding-left: 1rem;
 }
 
 .banner__title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
   padding-bottom: 0.3rem;
 }

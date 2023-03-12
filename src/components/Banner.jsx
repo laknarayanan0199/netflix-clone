@@ -6,17 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 // import requests from "../../Requests";
 import { listActions } from "../store/listSlice";
+import { movieActions } from "../store/movieSlice";
 import "./banner.css";
 
-const Contents = ({ fetchUrl }) => {
+const Banner = ({ fetchUrl }) => {
   const [data, setData] = useState([]); //Data coulde be either series or movies.
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const moviesfromSlice = useSelector((state) => state.movies.movies);
-
-  const seriesfromSlice = useSelector((state) => state.movies.series);
 
   useEffect(() => {
     fetch(fetchUrl)
@@ -24,42 +21,29 @@ const Contents = ({ fetchUrl }) => {
 
       .then((response) => {
         setData(response.results);
+        dispatch(movieActions.addData(response.results));
       });
-  }, [fetchUrl]);
+  }, []);
 
   const addToList = (data) => {
     dispatch(listActions.addToMyList(data));
   };
 
   const navi = (id) => {
-    const moviesPage = moviesfromSlice.filter(
-      (movie) => movie.id === Number(id)
-    )[0];
-    const seriesPage = seriesfromSlice.filter(
-      (series) => series.id === Number(id)
-    )[0];
-
-    if (moviesPage) {
-      navigate(`/movies/${id}`);
-    } else if (seriesPage) {
-      navigate(`/series/${id}`);
-    }
+    navigate(`/${id}`);
   };
 
   return (
     <header className="banner">
       <div className="banner_lists">
         {data.map((data) => (
-          <div
-            key={data.id}
-            className="banner__list"
-            onClick={() => {
-              navi(data.id);
-            }}
-          >
+          <div key={data.id} className="banner__list">
             <img
               src={`https://image.tmdb.org/t/p/original//${data.backdrop_path}`}
               alt="data_image"
+              onClick={() => {
+                navi(data.id);
+              }}
             />
             <div className="banner__contents">
               <h1 className="banner__title">
@@ -92,4 +76,4 @@ const Contents = ({ fetchUrl }) => {
   );
 };
 
-export default Contents;
+export default Banner;

@@ -1,72 +1,18 @@
-import { Add } from "@mui/icons-material";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { listActions } from "../../../store/listSlice";
-import { movieActions } from "../../../store/movieSlice";
-import Card from "../../UI/Card";
-import "./series.css";
+import React from "react";
+import requests from "../../../Requests";
+import Banner from "../../Banner";
+import Row from "../../Row";
 
-const Series = ({ title, fetchUrl }) => {
-  const [series, setSeries] = useState([]);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const imgBaseURL = "https://image.tmdb.org/t/p/original/";
-
-  useEffect(() => {
-    fetch(fetchUrl)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Series Not Found");
-        }
-        return res.json();
-      })
-      .then((series) => {
-        setSeries(series.results);
-        dispatch(movieActions.addSeries(series.results));
-      });
-  }, []);
-
-  const addToList = (ser) => {
-    dispatch(listActions.addToMyList(ser));
-  };
-
-  const navi = (id) => {
-    navigate(`/series/${id}`);
-  };
-
+const Series = () => {
   return (
-    <div className="series">
-      <h2> {title}</h2>
-      <div className="series__lists">
-        {series.map((ser) => (
-          <Card key={ser.id}>
-            <div className="list">
-              <div
-                className="series__list"
-                onClick={() => {
-                  navi(ser.id);
-                }}
-              >
-                <img
-                  src={`${imgBaseURL}${ser.backdrop_path}`}
-                  alt={series.original_title}
-                />
-                <h4>{ser.original_name}</h4>
-              </div>
-              <div className="action-btns">
-                <button className="action-btn">Play</button>
-                <button className="action-btn" onClick={() => addToList(ser)}>
-                  <Add /> My List
-                </button>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
+    <>
+      <Banner title="Netflix Originals" fetchUrl={requests.fetchTrending} />
+      <Row
+        title="This Year Release"
+        fetchUrl={requests.fetchNetflixOriginals}
+      />
+      <Row title="Drama" fetchUrl={requests.fetchDrama} />
+    </>
   );
 };
 

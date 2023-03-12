@@ -1,7 +1,8 @@
-.nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   position: fixed;
+  background-color: transparent;
   top: 0;
   padding: 20px;
   width: 100%;
@@ -10,15 +11,17 @@
   transition-timing-function: ease-in;
   transition: all 0.5s;
 }
-.nav__contents {
-  width: 60%;
+
+.nav__contents__left {
+  width: 50%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
 }
 
-.nav__links {
-  margin-left: 1rem;
+.right {
+  width: 15%;
+  display: flex;
 }
 
 .nav__links a {
@@ -30,19 +33,34 @@
 .nav__black {
   background-color: #111;
 }
-.nav__logo {
-  position: fixed;
-  /* top: 10px; */
-  left: 0;
-  width: 80px;
+
+.nav__avatar {
+  cursor: pointer;
+  width: 30px;
+}
+
+.border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.logo {
+  /* position: fixed;
+  top: 10px;
+  left: 0; */
+  height: 5rem;
   object-fit: contain;
   margin-left: 20px;
   cursor: pointer;
 }
 
-.nav__avatar {
+.signInButton {
+  z-index: 9;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  position: fixed;
-  right: 20px;
-  width: 30px;
 }

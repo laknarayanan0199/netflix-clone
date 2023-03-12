@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import netflix from "../../../assests/netflix.png";
 import "./login.css";
-import "../register/navbar.css";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../../../store/authSlice";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,9 +10,6 @@ const Login = () => {
   const [alert, setAlert] = useState(false);
 
   const users = useSelector((state) => state.user.users);
-  console.log(users);
-
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -25,7 +19,6 @@ const Login = () => {
       users.some((user) => email === user.email && password === user.password)
     ) {
       localStorage.setItem("isAuth", true);
-      dispatch(authActions.loggedIn());
       navigate("/home");
     }
     return setAlert(true);
@@ -33,12 +26,9 @@ const Login = () => {
 
   return (
     <div className="signin">
-      <div className="navbar">
-        <img className="logo" src={netflix} alt="" />
-      </div>
       <div className="signInScreen">
+        <h1>Sign In</h1>
         <form>
-          <h1>Sign In</h1>
           <input
             placeholder="Email"
             type="email"
