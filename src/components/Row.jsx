@@ -30,7 +30,7 @@ const Row = ({ title, fetchUrl }) => {
   };
 
   const navi = (id) => {
-    navigate(`/${id}`);
+    navigate(`/details/${id}`);
   };
   return (
     <div className="row">

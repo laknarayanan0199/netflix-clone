@@ -10,15 +10,13 @@ import Series from "./components/pages/series/Series";
 import Layout from "./layout/Layout";
 
 function App() {
-
   const navigate = useNavigate();
-  
+
   const isAuthenticated = localStorage.getItem("isAuth");
 
   const onLogin = () => {
     navigate("/home");
   };
-
 
   return (
     <>
@@ -30,12 +28,13 @@ function App() {
           <>
             <Route path="home" element={<Home />} />
             <Route path="movies" element={<Movies />} />
-            <Route path="/:id" element={<Details />} />
+            <Route path="details/:id" element={<Details />} />
             <Route path="series" element={<Series />} />
             <Route path="my-list" element={<MyList />} />
-            <Route path="*" element={<Navigate to={"/home"} />} />
+            <Route path="*" element={<Navigate to={"home"} />} />
           </>
         )}
+        <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </>
   );

@@ -22,7 +22,7 @@ const MyList = () => {
   };
 
   const navi = (id) => {
-    navigate(`/${id}`);
+    navigate(`/details/${id}`);
   };
 
   return (

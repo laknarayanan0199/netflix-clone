@@ -29,7 +29,7 @@ const Banner = ({ fetchUrl }) => {
   };
 
   const navi = (id) => {
-    navigate(`/${id}`);
+    navigate(`/details/${id}`);
   };
 
   return (
