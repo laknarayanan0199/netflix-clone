@@ -6,7 +6,7 @@
 }
 .signInScreen {
   max-width: 30%;
-  height: 60%;
+  height: 65%;
   padding: 4rem;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.85);
@@ -14,12 +14,13 @@
 .signInScreen h1 {
   font-size: 2rem;
 }
-.signInScreen > form {
+.login__form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.signInScreen > form > input {
+
+.login__form input {
   outline-width: 0;
   height: 40px;
   margin-bottom: 1rem;
@@ -27,7 +28,7 @@
   border: none;
   padding: 0.3rem 0.9rem;
 }
-.signInScreen > form > button {
+.signIn_btn {
   padding: 0.5rem;
   width: 5rem;
   font-size: 1rem;
@@ -39,22 +40,18 @@
   cursor: pointer;
   margin-top: 20px;
 }
-.signInScreen > form > h1 {
-  text-align: left;
-  margin-bottom: 25px;
-  color: white;
-  font-size: 2.5rem;
-}
-.signInScreen > form > h4 {
+
+.login__form h5 {
   text-align: left;
   margin-top: 30px;
 }
-.signInScreen__gray {
+.signUpScreen__gray {
   color: gray;
 }
 
-.signInScreen__link {
+.signUpScreen__link {
   color: white;
+  cursor: pointer;
 }
 .signInScreen__link:hover {
   cursor: pointer;

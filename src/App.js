@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useNavigate } from "react-router";
 import "./App.css";
 import Home from "./components/pages/home/Home";
 import Register from "./components/pages/register/Register";
@@ -10,14 +10,22 @@ import Series from "./components/pages/series/Series";
 import Layout from "./layout/Layout";
 
 function App() {
+
+  const navigate = useNavigate();
+  
   const isAuthenticated = localStorage.getItem("isAuth");
+
+  const onLogin = () => {
+    navigate("/home");
+  };
+
 
   return (
     <>
       <Layout />
       <Routes>
         <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login loginHandler={onLogin} />} />
         {isAuthenticated && (
           <>
             <Route path="home" element={<Home />} />

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { listActions } from "../../../store/listSlice";
 import Card from "../../UI/Card";
 // import "../../row.css";
@@ -9,13 +10,19 @@ const MyList = () => {
   const list = useSelector((state) => state.myList.list);
 
   console.log(list);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const imgBaseURL = "https://image.tmdb.org/t/p/original/";
 
   const remove = (removeId) => {
     console.log(removeId);
     dispatch(listActions.removeFromList(removeId));
+  };
+
+  const navi = (id) => {
+    navigate(`/${id}`);
   };
 
   return (
@@ -30,6 +37,7 @@ const MyList = () => {
                   <img
                     src={`${imgBaseURL}${list.backdrop_path}`}
                     alt={list.original_title}
+                    onClick={() => navi(list.id)}
                   />
                   <h4>{list?.name || list?.title || list?.original_name}</h4>
                 </div>

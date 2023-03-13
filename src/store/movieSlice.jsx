@@ -5,8 +5,7 @@ const movieSlice = createSlice({
   initialState: { data: [] },
   reducers: {
     addData(state, action) {
-      if (state.data.length < 120) {
-        console.log(state.data.length);
+      if (state.data.length < 260) {
         state.data.push(...action.payload);
       }
     },

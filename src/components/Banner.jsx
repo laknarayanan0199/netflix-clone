@@ -4,7 +4,6 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-// import requests from "../../Requests";
 import { listActions } from "../store/listSlice";
 import { movieActions } from "../store/movieSlice";
 import "./banner.css";
@@ -23,7 +22,7 @@ const Banner = ({ fetchUrl }) => {
         setData(response.results);
         dispatch(movieActions.addData(response.results));
       });
-  }, []);
+  });
 
   const addToList = (data) => {
     dispatch(listActions.addToMyList(data));
