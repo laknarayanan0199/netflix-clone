@@ -6,7 +6,7 @@
 }
 .signInScreen {
   max-width: 30%;
-  height: 65%;
+  /* height: 65%; */
   padding: 4rem;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.85);
