@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import "./App.css";
 import Home from "./components/pages/home/Home";
 import Register from "./components/pages/register/Register";
@@ -20,14 +20,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         {isAuthenticated && (
           <>
-            <Route path="/home" element={<Home />} />
-            <Route path="/movies" element={<Movies />} />
+            <Route path="home" element={<Home />} />
+            <Route path="movies" element={<Movies />} />
             <Route path="/:id" element={<Details />} />
-            <Route path="/series" element={<Series />} />
-            <Route path="/my-list" element={<MyList />} />
+            <Route path="series" element={<Series />} />
+            <Route path="my-list" element={<MyList />} />
+            <Route path="*" element={<Navigate to={"/home"} />} />
           </>
         )}
-        {/* <Route path="*" element={<Navigate to={"/"} />} /> */}
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@ import { Add } from "@mui/icons-material";
 import StarRateIcon from "@mui/icons-material/StarRate";
 
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 // import requests from "../../Requests";
 import { listActions } from "../store/listSlice";

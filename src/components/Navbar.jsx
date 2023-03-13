@@ -30,14 +30,22 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  const signInHandler = () => {
-    navigate("/login");
+  const homePageHandler = () => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+    return navigate("/login");
   };
 
   return (
     <div className={`navbar  ${show && "nav__black"}`}>
       <div className="nav__contents__left">
-        <img src={netflix} alt="logo" className="logo nav__logo" />
+        <img
+          src={netflix}
+          alt="logo"
+          className="logo nav__logo"
+          onClick={homePageHandler}
+        />
         {isAuthenticated && (
           <div className="nav__links">
             <Link to={"/home"}>Home</Link>
@@ -45,21 +53,21 @@ const Navbar = () => {
             <Link to={"/movies"}>Movies</Link>
             <Link to={"/my-list"}>My List</Link>
           </div>
-         )}
+        )}
       </div>
       <div className="right">
         {!isAuthenticated && (
-          <button className="signInButton" onClick={signInHandler}>
+          <button className="signInButton" onClick={() => navigate("/login")}>
             Sign In
           </button>
-         )} 
-                {isAuthenticated && (
+        )}
+        {isAuthenticated && (
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
             alt="avatar"
             onClick={profileHandler}
           />
-         )}
+        )}
       </div>
     </div>
   );
