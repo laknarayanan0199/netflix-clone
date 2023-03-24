@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import netflix from "../assests/netflix.png";
+import hamburger from "../assests/hamburger.png";
+import close from "../assests/close.png";
 import "./navbar.css";
 
 const Navbar = () => {
   const isAuthenticated = localStorage.getItem("isAuth");
 
   const [show, handleShow] = useState(false);
+
+  const [isHamburger, setIsHamburger] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,7 +29,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const profileHandler = () => {
+  const logoutHandler = () => {
     localStorage.removeItem("isAuth");
     navigate("/login");
   };
@@ -34,80 +38,58 @@ const Navbar = () => {
     if (isAuthenticated) {
       navigate("/home");
     }
-    return navigate("/login");
   };
 
   return (
     <div className={`navbar  ${show && "nav__black"}`}>
       <div className="nav__contents__left">
+        {!isHamburger ? (
+          <img
+            src={hamburger}
+            alt=""
+            className="hamburger_icon"
+            onClick={() => setIsHamburger(!isHamburger)}
+          />
+        ) : (
+          <img
+            src={close}
+            alt=""
+            className="hamburger_icon"
+            onClick={() => setIsHamburger(!isHamburger)}
+          />
+        )}
+        {isHamburger ? (
+          <div className="mobile__nav__links">
+            <Link to={"/home"}>Home</Link>
+            <Link to={"/series"}>Series</Link>
+            <Link to={"/movies"}>Movies</Link>
+            <Link to={"/my-list"}>My List</Link>
+          </div>
+        ) : null}
         <img
           src={netflix}
           alt="logo"
-          className="logo nav__logo"
+          className="logo"
           onClick={homePageHandler}
         />
-        {isAuthenticated && (
+        {!isHamburger ? (
           <div className="nav__links">
             <Link to={"/home"}>Home</Link>
             <Link to={"/series"}>Series</Link>
             <Link to={"/movies"}>Movies</Link>
             <Link to={"/my-list"}>My List</Link>
           </div>
-        )}
+        ) : null}
       </div>
       <div className="right">
-        {!isAuthenticated && (
-          <button className="signInButton" onClick={() => navigate("/login")}>
-            Sign In
-          </button>
-        )}
-        {isAuthenticated && (
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-            alt="avatar"
-            onClick={profileHandler}
-          />
-        )}
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt="avatar"
+        />
+        <button onClick={logoutHandler}>Logout</button>
       </div>
     </div>
   );
 };
 
 export default Navbar;
-
-// <div className={`navbar ${show && "nav__black"}`}>
-//   <div className="nav__contents">
-//   <img
-//     onClick={() => {
-//       navigate("/home");
-//     }}
-//     className="logo nav__logo"
-//     src={netflix}
-//     alt="logo"
-//   />
-//   {isAuthenticated && (
-//     <div className="nav__links">
-//       <Link to={"/home"}>Home</Link>
-//       <Link to={"/series"}>Series</Link>
-//       <Link to={"/movies"}>Movies</Link>
-//       <Link to={"/my-list"}>My List</Link>
-//     </div>
-//   )}
-//   </div>
-//   <div>
-//     {!isAuthenticated && (
-//       <button className="signInButton" onClick={signInHandler}>
-//         Sign In
-//       </button>
-//     )}
-//     {isAuthenticated && (
-//       <img
-//         // onClick={() => navigate("/profile")}
-//         className="nav__avatar"
-//         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-//         alt=""
-//         onClick={profileHandler}
-//       />
-//     )}
-//   </div>
-// </div>

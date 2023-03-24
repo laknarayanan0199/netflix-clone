@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  /* padding-inline-start: 0; */
+  overflow-y: hidden;
 }
 
 .list:hover {
@@ -22,6 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .data {
@@ -30,6 +31,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  cursor: pointer;
 }
 
 .row__lists::-webkit-scrollbar {
@@ -38,7 +40,7 @@
 
 .row img {
   max-width: 20rem;
-  min-height: auto;
+  min-height: 10rem;
 }
 
 .action-btns {
@@ -53,7 +55,7 @@
   border: none;
   font-weight: 700;
   border-radius: 0.2vw;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   margin-right: 1rem;
   background-color: rgba(51, 51, 51, 0.5);
 }

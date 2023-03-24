@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router";
-import "./App.css";
 import Home from "./components/pages/home/Home";
 import Register from "./components/pages/register/Register";
 import Login from "./components/pages/logIn/Login";
@@ -7,7 +6,6 @@ import MyList from "./components/pages/my-list/MyList";
 import Details from "./components/pages/Details/Details";
 import Movies from "./components/pages/movies/Movies";
 import Series from "./components/pages/series/Series";
-import Layout from "./layout/Layout";
 
 function App() {
   const navigate = useNavigate();
@@ -20,7 +18,6 @@ function App() {
 
   return (
     <>
-      <Layout />
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login loginHandler={onLogin} />} />

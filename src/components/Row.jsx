@@ -8,6 +8,7 @@ import Card from "./UI/Card";
 import "./row.css";
 
 const Row = ({ title, fetchUrl }) => {
+  // const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
@@ -16,11 +17,13 @@ const Row = ({ title, fetchUrl }) => {
   const imgBaseURL = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
+    // setIsLoading(true);
     fetch(fetchUrl)
       .then((response) => response.json())
 
       .then((response) => {
         setData(response.results);
+        // setIsLoading(false);
         dispatch(movieActions.addData(response.results));
       });
   }, []);
@@ -34,38 +37,48 @@ const Row = ({ title, fetchUrl }) => {
   };
   return (
     <div className="row">
-      <h2> {title}</h2>
-      <div className="row__lists">
-        {data.map((data) => (
-          <Card key={data.id}>
-            <div className="list">
-              <div
-                className="data"
-                onClick={() => {
-                  navi(data.id);
-                }}
-              >
-                <img
-                  src={`${imgBaseURL}${data?.backdrop_path}`}
-                  alt={data?.original_title || data?.title}
-                />
-                <h4>{data?.name || data?.title || data?.original_name}</h4>
-              </div>
-              <div className="action-btns">
-                <button className="action-btn">Play</button>
-                <button
-                  className="action-btn"
+      <>
+        <h2> {title}</h2>
+        <div className="row__lists">
+          {data.map((data) => (
+            <Card key={data.id}>
+              <div className="list">
+                <div
+                  className="data"
                   onClick={() => {
-                    addToList(data);
+                    navi(data.id);
                   }}
                 >
-                  <Add /> My List
-                </button>
+                  <img
+                    src={`${imgBaseURL}${data?.backdrop_path}`}
+                    alt={data?.original_title || data?.title}
+                  />
+                  <h4>{data?.name || data?.title || data?.original_name}</h4>
+                </div>
+                <div className="action-btns">
+                  <button
+                    className="action-btn"
+                    onClick={() => {
+                      navi(data.id);
+                    }}
+                  >
+                    Play
+                  </button>
+                  <button
+                    className="action-btn"
+                    onClick={() => {
+                      addToList(data);
+                    }}
+                  >
+                    <Add />
+                    My List
+                  </button>
+                </div>
               </div>
-            </div>
-          </Card>
-        ))}
-      </div>
+            </Card>
+          ))}
+        </div>
+      </>
     </div>
   );
 };

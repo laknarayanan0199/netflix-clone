@@ -38,7 +38,7 @@ const Banner = ({ fetchUrl }) => {
         {data.map((data) => (
           <div key={data.id} className="banner__list">
             <img
-              src={`https://image.tmdb.org/t/p/original//${data.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original//${data?.backdrop_path}`}
               alt="data_image"
               onClick={() => {
                 navi(data.id);
@@ -56,9 +56,15 @@ const Banner = ({ fetchUrl }) => {
                 </span>{" "}
                 {data?.vote_average}
               </div>
-              <br />
               <div className="banner__buttons">
-                <button className="banner__button">Play</button>
+                <button
+                  className="banner__button disabled"
+                  onClick={() => {
+                    navi(data.id);
+                  }}
+                >
+                  Play
+                </button>
                 <button
                   className="banner__button"
                   onClick={() => addToList(data)}

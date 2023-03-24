@@ -1,5 +1,5 @@
 .banner {
-  margin: 0rem 0.5rem;
+  margin-left: 0.5rem;
 }
 .banner__buttons {
   display: flex;
@@ -14,8 +14,8 @@
   border: none;
   font-weight: 700;
   border-radius: 0.2vw;
-  padding: 0.5rem 2rem;
-  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
   background-color: rgba(51, 51, 51, 0.5);
 }
 .banner__button:hover {
@@ -31,6 +31,7 @@
   margin: 0;
   list-style: none;
   overflow-x: scroll;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -39,9 +40,11 @@
 }
 
 .banner_lists img {
+  position: relative;
   z-index: 10;
   max-width: 150vh;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .banner__contents {
@@ -49,13 +52,12 @@
   position: absolute;
   bottom: 100px;
   padding-left: 1rem;
-
 }
 
 .banner__title {
   font-size: 2.5rem;
   font-weight: 800;
-  padding-bottom: 0.3rem;
+  /* padding-bottom: 0.3rem; */
 }
 .banner__description {
   width: 45rem;
@@ -66,14 +68,23 @@
   height: 80px;
 }
 
-.banner--fadeBottom {
-  position: absolute;
-  bottom: 0;
-  height: 7.4rem;
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
-  );
+@media (max-width: 56rem) {
+  .banner {
+    margin-top: 4rem;
+  }
+  .banner_lists img {
+    max-width: 90vw;
+  }
+  .banner__contents {
+    max-height: 10rem;
+    bottom: 10px;
+  }
+  .banner__title {
+    font-size: 1.2rem;
+    margin: 0.5rem 1rem;
+  }
+
+  .banner__description {
+    display: none;
+  }
 }

@@ -1,13 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router";
 import Navbar from "../components/Navbar";
+import "./layout.css";
 
-const Layout = () => {
+const Layout = (props) => {
   return (
-    <>
+    <div className={`${props.className ? props.className : "layout"}`}>
       <Navbar />
-      <Outlet />
-    </>
+      {props.children}
+    </div>
   );
 };
 
